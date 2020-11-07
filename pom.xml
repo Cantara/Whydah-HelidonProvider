@@ -31,9 +31,7 @@
     <whydah-java-sdk-version>2.6.3</whydah-java-sdk-version>
     <additionalparam>-Xdoclint:none</additionalparam>
     <helidon-version>2.0.1</helidon-version>
-<!--    <maven.compiler.target>11</maven.compiler.target>-->
-<!--    <maven.compiler.source>11</maven.compiler.source>-->
-    <jdk.version>9</jdk.version>
+    <jdk.version>11</jdk.version>
   </properties>
 
 
@@ -164,8 +162,7 @@
             </goals>
             <configuration>
               <additionalparam>-Xdoclint:none</additionalparam>
-<!--              <detectJavaApiLink>false</detectJavaApiLink>-->
-<!--              <source>8</source>-->
+              <detectJavaApiLink>false</detectJavaApiLink>
             </configuration>
           </execution>
         </executions>
