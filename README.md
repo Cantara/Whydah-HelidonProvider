@@ -28,7 +28,7 @@ In pom.xml
 <dependency>
   <groupId>net.whydah.sso</groupId>
   <artifactId>Whydah-HelidonProvider</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.1.0</version>
 </dependency>
 ```
 In src/main/resources/application.yaml file
