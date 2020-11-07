@@ -1,0 +1,18 @@
+/**
+ * Secure your Helidon Application with Whydah
+ */
+module net.whydah.sso.helidon {
+    // implementation of expression language to use (used by the abac provider: policy expression language
+    // needed for security components and restrictions of this module
+    requires io.helidon.security;
+    requires io.helidon.security.annotations;
+    requires io.helidon.security.abac.role;
+
+    // needed for jersey to start without a lot of errors (hk2 actually)
+//    requires java.xml.bind;
+
+    // java util logging
+    requires java.logging;
+
+    exports net.whydah.sso.helidon;
+}
