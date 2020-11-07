@@ -19,9 +19,9 @@
   </parent>
 
   <scm>
-    <developerConnection>scm:git:ssh://git@github.com/cantara/Whydah-Java-SDK.git</developerConnection>
-    <connection>scm:git:https://github.com/cantara/Whydah-Java-SDK.git</connection>
-    <url>https://github.com/cantara/Whydah-Java-SDK</url>
+    <developerConnection>scm:git:ssh://git@github.com/cantara/Whydah-HelidonProvider.git</developerConnection>
+    <connection>scm:git:https://github.com/cantara/Whydah-HelidonProvider.git</connection>
+    <url>https://github.com/cantara/Whydah-HelidonProvider</url>
     <tag>HEAD</tag>
   </scm>
 
