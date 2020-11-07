@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>net.whydah.sso</groupId>
+  <artifactId>Whydah-HelidonProvider</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+
+  <name>Whydah-HelidonProvider</name>
+  <packaging>jar</packaging>
+  <url>https://wiki.cantara.no/display/iam/Whydah-Java-SDK</url>
+
+  <parent>
+    <groupId>no.cantara.emi</groupId>
+    <artifactId>parent</artifactId>
+    <version>8</version>
+  </parent>
+
+  <scm>
+    <developerConnection>scm:git:ssh://git@github.com/cantara/Whydah-Java-SDK.git</developerConnection>
+    <connection>scm:git:https://github.com/cantara/Whydah-Java-SDK.git</connection>
+    <url>https://github.com/cantara/Whydah-Java-SDK</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <properties>
+    <service.name>Whydah-HelidonProvider</service.name>
+    <whydah-typelib-version>2.6.3</whydah-typelib-version>
+    <whydah-java-sdk-version>2.6.3</whydah-java-sdk-version>
+    <additionalparam>-Xdoclint:none</additionalparam>
+    <helidon-version>2.0.1</helidon-version>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+  </properties>
+
+
+
+  <developers>
+    <developer>
+      <id>baardl</id>
+      <name>Bard Lind</name>
+      <email>bard.lind@gmail.com</email>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <organization>Cantara </organization>
+      <organizationUrl>https://wiki.cantara.no/</organizationUrl>
+    </developer>
+  </developers>
+
+  <repositories>
+    <!-- Needed for parent  -->
+    <repository>
+      <id>cantara-releases</id>
+      <name>Cantara Release Repository</name>
+      <url>https://mvnrepo.cantara.no/content/repositories/releases/</url>
+    </repository>
+    <!-- Needed for SDK snapshots  -->
+    <repository>
+      <id>cantara-snapshots</id>
+      <name>Cantara Snapshot Repository</name>
+      <url>https://mvnrepo.cantara.no/content/repositories/snapshots/</url>
+    </repository>
+  </repositories>
+
+
+  <dependencies>
+  <dependency>
+    <groupId>net.whydah.sso</groupId>
+    <artifactId>Whydah-TypeLib</artifactId>
+    <version>${whydah-typelib-version}</version>
+  </dependency>
+    <dependency>
+      <groupId>net.whydah.sso</groupId>
+      <artifactId>Whydah-Java-SDK</artifactId>
+      <version>${whydah-java-sdk-version}</version>
+    </dependency>
+
+    <!-- Provided by Helidon runtime -->
+    <dependency>
+      <groupId>io.helidon.security</groupId>
+      <artifactId>helidon-security</artifactId>
+      <version>${helidon-version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.helidon.security.providers</groupId>
+      <artifactId>helidon-security-providers-common</artifactId>
+      <version>${helidon-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.helidon.security</groupId>
+      <artifactId>helidon-security-annotations</artifactId>
+      <version>${helidon-version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>io.helidon.security.abac</groupId>
+        <artifactId>helidon-security-abac-role</artifactId>
+        <version>${helidon-version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.ws.rs</groupId>
+      <artifactId>javax.ws.rs-api</artifactId>
+      <version>2.1.1</version>
+      <scope>provided</scope>
+    </dependency>
+
+
+
+    <!-- TEST -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.helidon.config</groupId>
+      <artifactId>helidon-config-yaml</artifactId>
+      <version>${helidon-version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Runtime should decide log implementation -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.1.7</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.skyscreamer</groupId>
+      <artifactId>jsonassert</artifactId>
+      <version>1.5.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.19.1</version>
+        <configuration>
+          <forkCount>1</forkCount>
+          <reuseForks>false</reuseForks>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <additionalparam>-Xdoclint:none</additionalparam>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>9</source>
+          <target>9</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

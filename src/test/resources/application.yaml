@@ -1,0 +1,5 @@
+# security for webserver is configured here (static content)
+security:
+  providers:
+    - atn:
+      class: "net.whydah.sso.helidon.WhydahProvider"
