@@ -64,6 +64,23 @@ public class WhydahSecuredResource() {
 ....
 }
  ```
+ ### Helidon-MP app
+ Used for validation and later statistics reporting
+ ```
+ @ApplicationScoped
+ @ApplicationPath("/")
+ public class MainApp extends Application {
+
+     @Override
+     public Set<Class<?>> getClasses() {
+         return Set.of(
+                 HealthResource.class,
+                ...
+                 net.whydah.sso.helidon.WhydahServicesAuthResource.class
+         );
+     }
+ }
+ ```
 
 ## Validate
 
