@@ -29,7 +29,7 @@
     <whydah-typelib-version>2.6.3</whydah-typelib-version>
     <whydah-java-sdk-version>2.6.3</whydah-java-sdk-version>
     <additionalparam>-Xdoclint:none</additionalparam>
-    <helidon-version>2.0.1</helidon-version>
+    <helidon-version>2.1.0</helidon-version>
     <jdk.version>11</jdk.version>
   </properties>
 
