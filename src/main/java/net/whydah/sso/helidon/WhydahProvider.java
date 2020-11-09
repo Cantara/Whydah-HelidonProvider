@@ -56,6 +56,7 @@ public class WhydahProvider extends SynchronousProvider implements Authenticatio
             }
         } else {
             log.warn("Whydah Authentication is disabled.");
+            System.out.println("WARNING: Authentication and authorization is disabled");
         }
     }
 
@@ -63,6 +64,7 @@ public class WhydahProvider extends SynchronousProvider implements Authenticatio
     protected AuthenticationResponse syncAuthenticate(ProviderRequest providerRequest) {
         if (!whydahEnabled) {
             log.warn("Authentication and authorization is disabled.");
+            System.out.println("WARNING: Authentication and authorization is disabled");
             Subject stubUser = buildSubject(buildStubUser());
             Subject stubService = buildSubject(buildStubService());
             return AuthenticationResponse.success(stubUser, stubService);

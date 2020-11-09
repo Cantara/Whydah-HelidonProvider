@@ -54,17 +54,27 @@ whydah_application_id=<id from whydah useradmin>
 whydah_application_secret=<secret from whydah useradmin>
 ```
 
- ### REST endpoints
+*Testing*
+In src/test/resources/application.yaml file
+```
+security:
+  providers:
+    - atn:
+      class: "net.whydah.sso.helidon.WhydahProvider"
+```
+
+### REST endpoints
 
  ```
 @Path("...")
 @Authenticated
 @RoleValidator.Roles(value = "service_verified", subjectType = SubjectType.SERVICE)
+@RoleValidator.Roles(value = "stub_service", subjectType = SubjectType.SERVICE) //Used for testing
 public class WhydahSecuredResource() {
 ....
 }
  ```
- ### Helidon-MP app
+### Helidon-MP app
  Used for validation and later statistics reporting
  ```
  @ApplicationScoped
