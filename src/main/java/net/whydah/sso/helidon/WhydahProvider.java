@@ -4,6 +4,7 @@ import io.helidon.security.*;
 import io.helidon.security.spi.AuthenticationProvider;
 import io.helidon.security.spi.SynchronousProvider;
 import net.whydah.sso.helidon.internal.CredentialStore;
+import net.whydah.sso.helidon.internal.TestStubs;
 import net.whydah.sso.helidon.internal.WhydahApplicationClient;
 import org.slf4j.Logger;
 
@@ -13,6 +14,8 @@ import java.util.List;
 import java.util.Set;
 
 import static net.whydah.sso.helidon.internal.ConfigUtils.getConfigValue;
+import static net.whydah.sso.helidon.internal.TestStubs.buildStubService;
+import static net.whydah.sso.helidon.internal.TestStubs.buildStubUser;
 import static org.slf4j.LoggerFactory.getLogger;
 
 public class WhydahProvider extends SynchronousProvider implements AuthenticationProvider {
@@ -33,7 +36,7 @@ public class WhydahProvider extends SynchronousProvider implements Authenticatio
         String whydahEnabledValue = getConfigValue("whydah_enabled");
         if (Boolean.parseBoolean(whydahEnabledValue)) {
             whydahEnabled = true;
-            log.info("Graph is enabled. Will read and write to the graph.");
+            log.info("Whdydah is enabled.");
             whydahUri = getConfigValue("whydah_uri");
             securityTokenServiceUri = whydahUri + "tokenservice/";
             userAdminServiceUri = whydahUri + "useradminservice/";
@@ -51,11 +54,19 @@ public class WhydahProvider extends SynchronousProvider implements Authenticatio
             } else {
                 log.trace("Application {} is loged on to Whydah. {}", applicationName);
             }
+        } else {
+            log.warn("Whydah Authentication is disabled.");
         }
     }
 
     @Override
     protected AuthenticationResponse syncAuthenticate(ProviderRequest providerRequest) {
+        if (!whydahEnabled) {
+            log.warn("Authentication and authorization is disabled.");
+            Subject stubUser = buildSubject(buildStubUser());
+            Subject stubService = buildSubject(buildStubService());
+            return AuthenticationResponse.success(stubUser, stubService);
+        }
         boolean hasAuthorization = providerRequest.env().headers().containsKey("Authorization");
         if (!hasAuthorization) {
             return AuthenticationResponse.failed("Missing Authorization Bearer Token.");
