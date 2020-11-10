@@ -19,37 +19,40 @@ public class WhydahApplicationClient {
     }
 
     public Authentication findServiceAuth(String clientTokenId) {
+        Authentication serviceAuth = null;
         String applicationId = getApplicationTokenFromTokenId(clientTokenId);
-        Authentication serviceAuth = new Authentication() {
+        if (applicationId != null && !applicationId.isEmpty()) {
+            serviceAuth = new Authentication() {
 
-            public Class<? extends Annotation> annotationType() {
-                return Authentication.class;
-            }
-
-            @Override
-            public String value() {
-                return applicationId;
-            }
-
-            @Override
-            public SubjectType type() {
-                return SubjectType.SERVICE;
-            }
-
-            @Override
-            public String[] roles() {
-                if (applicationId == null || applicationId.isEmpty()) {
-                    return new String[0];
-                } else {
-                    return new String[]{"service_verified"};
+                public Class<? extends Annotation> annotationType() {
+                    return Authentication.class;
                 }
-            }
 
-            @Override
-            public String[] scopes() {
-                return new String[]{"tfm2rec_read", "tfm2rec_write"};
-            }
-        };
+                @Override
+                public String value() {
+                    return applicationId;
+                }
+
+                @Override
+                public SubjectType type() {
+                    return SubjectType.SERVICE;
+                }
+
+                @Override
+                public String[] roles() {
+                    if (applicationId == null || applicationId.isEmpty()) {
+                        return new String[0];
+                    } else {
+                        return new String[]{"service_verified"};
+                    }
+                }
+
+                @Override
+                public String[] scopes() {
+                    return new String[]{"tfm2rec_read", "tfm2rec_write"};
+                }
+            };
+        }
         return serviceAuth;
     }
 

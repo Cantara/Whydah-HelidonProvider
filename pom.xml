@@ -5,7 +5,7 @@
 
   <groupId>net.whydah.sso</groupId>
   <artifactId>Whydah-HelidonProvider</artifactId>
-  <version>0.1.4-SNAPSHOT</version>
+  <version>0.2.0-SNAPSHOT</version>
 
   <name>Whydah-HelidonProvider</name>
   <packaging>jar</packaging>
@@ -107,7 +107,27 @@
       <scope>provided</scope>
     </dependency>
 
-
+    <!-- Metrics and statistics -->
+    <dependency>
+      <groupId>io.helidon.microprofile.metrics</groupId>
+      <artifactId>helidon-microprofile-metrics2</artifactId>
+      <version>1.4.7</version>
+      <scope>provided</scope>
+    </dependency>
+    <!--
+    <dependency>
+      <groupId>io.helidon.config</groupId>
+      <artifactId>helidon-config</artifactId>
+      <version>${helidon-version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.helidon.common</groupId>
+      <artifactId>helidon-common</artifactId>
+      <version>${helidon-version}</version>
+      <scope>provided</scope>
+    </dependency>
+    -->
 
     <!-- TEST -->
     <dependency>
