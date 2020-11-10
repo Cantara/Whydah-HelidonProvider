@@ -13,9 +13,16 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class WhydahApplicationClient {
     private static final Logger log = getLogger(WhydahApplicationClient.class);
     private final URI securityTokenServiceUri;
+    private final HystrixCommandRunner hystrixCommandRunner;
 
     public WhydahApplicationClient(String securityTokenServiceUri) {
         this.securityTokenServiceUri = URI.create(securityTokenServiceUri);
+        hystrixCommandRunner = new HystrixCommandRunner();
+    }
+
+    protected WhydahApplicationClient(URI securityTokenServiceUri, HystrixCommandRunner hystrixCommandRunner) {
+        this.securityTokenServiceUri = securityTokenServiceUri;
+        this.hystrixCommandRunner = hystrixCommandRunner;
     }
 
     public Authentication findServiceAuth(String clientTokenId) {
@@ -57,7 +64,8 @@ public class WhydahApplicationClient {
     }
 
     public String getApplicationTokenFromTokenId(String applicationTokenId) {
-        String applicationId = new CommandGetApplicationIdFromApplicationTokenId(securityTokenServiceUri, applicationTokenId).execute();
+        CommandGetApplicationIdFromApplicationTokenId getApplicationIdCommand = new CommandGetApplicationIdFromApplicationTokenId(securityTokenServiceUri, applicationTokenId);
+        String applicationId = hystrixCommandRunner.execute(getApplicationIdCommand);
         log.trace("Lookup application by applicationTokenId {}. Id found {}", applicationTokenId, applicationId);
         return applicationId;
     }
