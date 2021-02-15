@@ -26,8 +26,7 @@
 
   <properties>
     <service.name>Whydah-HelidonProvider</service.name>
-    <whydah-typelib-version>2.6.3</whydah-typelib-version>
-    <whydah-java-sdk-version>2.6.3</whydah-java-sdk-version>
+    <whydah-java-sdk-version>2.6.12</whydah-java-sdk-version>
     <additionalparam>-Xdoclint:none</additionalparam>
     <helidon-version>2.2.1</helidon-version>
     <jdk.version>11</jdk.version>
@@ -48,28 +47,8 @@
     </developer>
   </developers>
 
-  <repositories>
-    <!-- Needed for parent  -->
-    <repository>
-      <id>cantara-releases</id>
-      <name>Cantara Release Repository</name>
-      <url>https://mvnrepo.cantara.no/content/repositories/releases/</url>
-    </repository>
-    <!-- Needed for SDK snapshots  -->
-    <repository>
-      <id>cantara-snapshots</id>
-      <name>Cantara Snapshot Repository</name>
-      <url>https://mvnrepo.cantara.no/content/repositories/snapshots/</url>
-    </repository>
-  </repositories>
-
-
   <dependencies>
-  <dependency>
-    <groupId>net.whydah.sso</groupId>
-    <artifactId>Whydah-TypeLib</artifactId>
-    <version>${whydah-typelib-version}</version>
-  </dependency>
+
     <dependency>
       <groupId>net.whydah.sso</groupId>
       <artifactId>Whydah-Java-SDK</artifactId>
@@ -77,12 +56,6 @@
     </dependency>
 
     <!-- Provided by Helidon runtime -->
-<!--    <dependency>-->
-<!--      <groupId>io.helidon.common</groupId>-->
-<!--      <artifactId>helidon-common</artifactId>-->
-<!--      <version>${helidon-version}</version>-->
-<!--      <scope>provided</scope>-->
-<!--    </dependency>-->
     <dependency>
       <groupId>io.helidon.security</groupId>
       <artifactId>helidon-security</artifactId>
@@ -144,7 +117,6 @@
       <version>${helidon-version}</version>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <groupId>io.helidon.config</groupId>
       <artifactId>helidon-config-yaml</artifactId>
@@ -220,4 +192,19 @@
       </plugin>
     </plugins>
   </build>
+    <repositories>
+    <!-- Needed for parent  -->
+    <repository>
+      <id>cantara-releases</id>
+      <name>Cantara Release Repository</name>
+      <url>https://mvnrepo.cantara.no/content/repositories/releases/</url>
+    </repository>
+    <!-- Needed for SDK snapshots  -->
+    <repository>
+      <id>cantara-snapshots</id>
+      <name>Cantara Snapshot Repository</name>
+      <url>https://mvnrepo.cantara.no/content/repositories/snapshots/</url>
+    </repository>
+  </repositories>
+
 </project>
