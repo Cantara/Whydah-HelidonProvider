@@ -5,7 +5,7 @@
 
   <groupId>net.whydah.sso</groupId>
   <artifactId>Whydah-HelidonProvider</artifactId>
-  <version>0.2.1-SNAPSHOT</version>
+  <version>0.3.0-SNAPSHOT</version>
 
   <name>Whydah-HelidonProvider</name>
   <packaging>jar</packaging>
@@ -29,7 +29,7 @@
     <whydah-typelib-version>2.6.3</whydah-typelib-version>
     <whydah-java-sdk-version>2.6.3</whydah-java-sdk-version>
     <additionalparam>-Xdoclint:none</additionalparam>
-    <helidon-version>2.1.0</helidon-version>
+    <helidon-version>2.2.1</helidon-version>
     <jdk.version>11</jdk.version>
   </properties>
 
@@ -77,6 +77,12 @@
     </dependency>
 
     <!-- Provided by Helidon runtime -->
+<!--    <dependency>-->
+<!--      <groupId>io.helidon.common</groupId>-->
+<!--      <artifactId>helidon-common</artifactId>-->
+<!--      <version>${helidon-version}</version>-->
+<!--      <scope>provided</scope>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>io.helidon.security</groupId>
       <artifactId>helidon-security</artifactId>
@@ -87,6 +93,7 @@
       <groupId>io.helidon.security.providers</groupId>
       <artifactId>helidon-security-providers-common</artifactId>
       <version>${helidon-version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>io.helidon.security</groupId>
@@ -107,13 +114,6 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Metrics and statistics -->
-    <dependency>
-      <groupId>io.helidon.microprofile.metrics</groupId>
-      <artifactId>helidon-microprofile-metrics2</artifactId>
-      <version>1.4.7</version>
-      <scope>provided</scope>
-    </dependency>
     <!--
     <dependency>
       <groupId>io.helidon.config</groupId>
@@ -129,13 +129,22 @@
     </dependency>
     -->
 
+    <!-- Metrics and statistics -->
+    <dependency>
+      <groupId>io.helidon.metrics</groupId>
+      <artifactId>helidon-metrics</artifactId>
+      <version>${helidon-version}</version>
+      <scope>provided</scope>
+    </dependency>
+
     <!-- TEST -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.1</version>
+      <groupId>io.helidon.config</groupId>
+      <artifactId>helidon-config-hocon</artifactId>
+      <version>${helidon-version}</version>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>io.helidon.config</groupId>
       <artifactId>helidon-config-yaml</artifactId>
@@ -159,7 +168,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <version>RELEASE</version>
+      <version>5.7.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>

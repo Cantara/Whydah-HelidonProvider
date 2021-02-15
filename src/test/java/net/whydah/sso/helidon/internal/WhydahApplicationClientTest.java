@@ -2,12 +2,12 @@ package net.whydah.sso.helidon.internal;
 
 import io.helidon.security.SubjectType;
 import net.whydah.sso.helidon.Authentication;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -16,7 +16,7 @@ public class WhydahApplicationClientTest {
 
     private HystrixCommandRunner hystrixCommandRunner;
     private WhydahApplicationClient client;
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         hystrixCommandRunner = mock(HystrixCommandRunner.class);
         client = new WhydahApplicationClient(URI.create("http://localhost"), hystrixCommandRunner);
