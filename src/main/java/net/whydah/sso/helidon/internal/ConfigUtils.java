@@ -19,7 +19,7 @@ public class ConfigUtils {
     private static final Logger log = getLogger(ConfigUtils.class);
 
     public static String getConfigValue(String key) {
-        Config configurations = buildConfig();
+        Config configurations = dynamicConfig();
         Config parameter = configurations.get(key);
         String value = null;
         if (parameter.hasValue()) {
