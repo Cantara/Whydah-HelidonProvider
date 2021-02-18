@@ -5,11 +5,9 @@ import io.helidon.config.ConfigValue;
 import org.slf4j.Logger;
 
 import java.io.File;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 import static io.helidon.config.ConfigSources.classpath;
 import static io.helidon.config.ConfigSources.file;
@@ -82,14 +80,25 @@ public class ConfigUtils {
     }
 
     static boolean hasClasspathFile(String filePath) {
+        log.info("Find in classpath: {}", filePath);
         boolean hasClasspathFile = false;
         try {
-            URL fileResource = new ConfigUtils().getClass().getResource("/" + filePath);
-            if (fileResource != null) {
-                final Path file = Paths.get(fileResource.toURI());
-                hasClasspathFile = Files.exists(file);
+            Properties prop = new Properties();
+
+            InputStream inputStream = new ConfigUtils().getClass().getClassLoader().getResourceAsStream(filePath);
+
+            if (inputStream != null) {
+                try {
+                    prop.load(inputStream);
+                    hasClasspathFile = true;
+                } catch (io.helidon.config.ConfigException e) {
+                    log.trace("Found file {}", filePath);
+                    hasClasspathFile = true;
+                }
+            } else {
+                log.trace("Properties not in classpath: {}", filePath);
             }
-        } catch (URISyntaxException e) {
+        } catch ( IOException e) {
             e.printStackTrace();
         }
         return hasClasspathFile;
@@ -106,5 +115,11 @@ public class ConfigUtils {
             log.trace("local_config.properties is not found on path");
         }
         return hasLocalConfigFile;
+    }
+
+    public static void main(String[] args) {
+        log.info("Load dynamicConfig");
+        dynamicConfig();
+        log.info("Done");
     }
 }
