@@ -29,6 +29,7 @@ public class ConfigUtils {
         return value;
     }
 
+    @Deprecated
     static Config buildConfig() {
         Config config = null;
         boolean hasLocalConfigFile = false;
