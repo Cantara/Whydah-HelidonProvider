@@ -14,7 +14,7 @@ import javax.ws.rs.core.SecurityContext;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-@Path("/whdyah/services")
+@Path("/whydah/services")
 @Authenticated
 public class WhydahServicesAuthResource {
     private static final Logger log = getLogger(WhydahServicesAuthResource.class);
