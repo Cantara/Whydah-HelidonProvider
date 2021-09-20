@@ -34,7 +34,7 @@ public class WhydahApplicationClientTest {
         Authentication serviceAuth = client.findServiceAuth("validtokenid");
         assertNotNull(serviceAuth);
         assertEquals("applicationId", serviceAuth.value());
-        assertEquals(new String[]{"service_verified"},serviceAuth.roles());
+        assertEquals(new String[]{"service_verified"}.toString(),serviceAuth.roles().toString());
         assertEquals(SubjectType.SERVICE, serviceAuth.type());
     }
 }
