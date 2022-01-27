@@ -4,7 +4,6 @@ import io.helidon.config.Config;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static net.whydah.sso.helidon.internal.ConfigUtils.getConfigValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -16,7 +15,7 @@ class ConfigUtilsTest {
 
     @Test
     void dynamicConfig() {
-        assertEquals("https://sso-mocroprofile.whydah.org/", getConfigValue("whydah_uri"));
+        // assertEquals("https://sso-mocroprofile.whydah.org/", getConfigValue("whydah_uri")); // will never happen because microprofile config is overridden
         Config configs = ConfigUtils.dynamicConfig();
         Config value = configs.get("whydah_uri");
         assertEquals("https://sso.whydah.org/", value.asString().get());
@@ -32,6 +31,6 @@ class ConfigUtilsTest {
 
     @Test
     void hasConfigFile() {
-        assertTrue(ConfigUtils.hasClasspathFile("src/test/resources/application.yaml"));
+        assertTrue(ConfigUtils.hasConfigFile("src/test/resources/application.yaml"));
     }
 }
