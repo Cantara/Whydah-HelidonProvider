@@ -5,7 +5,7 @@
 
   <groupId>net.whydah.sso</groupId>
   <artifactId>Whydah-HelidonProvider</artifactId>
-  <version>0.4.8-SNAPSHOT</version>
+  <version>0.4.8</version>
 
   <name>Whydah-HelidonProvider</name>
   <packaging>jar</packaging>
@@ -21,7 +21,7 @@
     <developerConnection>scm:git:ssh://git@github.com/cantara/Whydah-HelidonProvider.git</developerConnection>
     <connection>scm:git:https://github.com/cantara/Whydah-HelidonProvider.git</connection>
     <url>https://github.com/cantara/Whydah-HelidonProvider</url>
-    <tag>HEAD</tag>
+    <tag>Whydah-HelidonProvider-0.4.8</tag>
   </scm>
 
   <properties>
