@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ConfigUtilsTest {
+public class ConfigUtilsTest {
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
     }
 
     @Test
-    void dynamicConfig() {
+    public void dynamicConfig() {
         // assertEquals("https://sso-mocroprofile.whydah.org/", getConfigValue("whydah_uri")); // will never happen because microprofile config is overridden
         Config configs = ConfigUtils.dynamicConfig();
         Config value = configs.get("whydah_uri");

@@ -43,6 +43,7 @@ public class WhydahProvider extends SynchronousProvider implements Authenticatio
     private MetricRegistry metricRegistry = null;
 
 
+    @SuppressWarnings("deprecation")
     public WhydahProvider() {
         metricRegistry = RegistryFactory.getInstance().getRegistry(MetricRegistry.Type.APPLICATION);
         if (this.metricRegistry != null) {
