@@ -1,0 +1,20 @@
+id: Whydah-HelidonProvider
+name: Whydah Helidon Provider
+version: 0.4.1-SNAPSHOT
+description: |
+  Eclipse Helidon framework integration for Whydah authentication. Provides a
+  security provider that validates Whydah tokens in Helidon microservices.
+units:
+  - id: security-provider
+    name: Security Provider
+    type: library
+    description: Helidon SecurityProvider implementation that plugs into the Helidon security SPI.
+    path: src/main/java/net/whydah
+  - id: token-validation
+    name: Token Validation
+    type: component
+    description: Whydah token verification against the Security Token Service.
+  - id: config
+    name: Helidon Configuration Binding
+    type: component
+    description: Helidon configuration binding for Whydah STS URL and application credentials.
