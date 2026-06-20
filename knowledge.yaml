@@ -1,3 +1,17 @@
+kcp_version: "0.21"
+updated: "2026-06-20"
+language: en
+license: "Apache-2.0"
+indexing: private
+temporal:
+  valid_from: "2026-03-10"
+signing:
+  scheme: ed25519
+  scope: this-manifest
+  public_key: "MCowBQYDK2VwAyEAuipgusnqU9vjf3p2yPVLD/DmERT6tBbLOqEETdxAhMU="
+  signature: "https://raw.githubusercontent.com/Cantara/Whydah-HelidonProvider/main/knowledge.yaml.sig"
+not_for: []
+
 id: Whydah-HelidonProvider
 name: Whydah Helidon Provider
 version: 0.4.1-SNAPSHOT
@@ -10,11 +24,20 @@ units:
     type: library
     description: Helidon SecurityProvider implementation that plugs into the Helidon security SPI.
     path: src/main/java/net/whydah
+      content_hash:
+        algorithm: sha256
+        value: ""
   - id: token-validation
     name: Token Validation
     type: component
     description: Whydah token verification against the Security Token Service.
+      content_hash:
+        algorithm: sha256
+        value: ""
   - id: config
     name: Helidon Configuration Binding
     type: component
     description: Helidon configuration binding for Whydah STS URL and application credentials.
+      content_hash:
+        algorithm: sha256
+        value: ""
