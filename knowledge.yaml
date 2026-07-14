@@ -1,4 +1,4 @@
-kcp_version: "0.21"
+kcp_version: "0.26"
 updated: "2026-06-20"
 language: en
 license: "Apache-2.0"
@@ -24,20 +24,19 @@ units:
     type: library
     description: Helidon SecurityProvider implementation that plugs into the Helidon security SPI.
     path: src/main/java/net/whydah
-      content_hash:
-        algorithm: sha256
-        value: ""
   - id: token-validation
     name: Token Validation
     type: component
     description: Whydah token verification against the Security Token Service.
-      content_hash:
-        algorithm: sha256
-        value: ""
   - id: config
     name: Helidon Configuration Binding
     type: component
     description: Helidon configuration binding for Whydah STS URL and application credentials.
-      content_hash:
-        algorithm: sha256
-        value: ""
+
+# Serving Endpoint Binding (KCP SPEC v0.26 §3.12): authoritative manifest URL
+# and authorized MCP representative. Ignored by pre-0.26 verifiers.
+serving:
+  manifest:
+    - https://raw.githubusercontent.com/Cantara/Whydah-HelidonProvider/main/knowledge.yaml
+  mcp:
+    - https://mcp.cantara.no/mcp
