@@ -28,7 +28,7 @@
     <service.name>Whydah-HelidonProvider</service.name>
     <whydah-java-sdk-version>3.1.13</whydah-java-sdk-version>
     <additionalparam>-Xdoclint:none</additionalparam>
-    <helidon-version>4.5.0</helidon-version>
+    <helidon-version>4.5.1</helidon-version>
     <jdk.version>11</jdk.version>
   </properties>
 
