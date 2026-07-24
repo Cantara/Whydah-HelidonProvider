@@ -2,5 +2,13 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>cantara/Cantara-Renovate-Config"
+  ],
+  "packageRules": [
+    {
+      "description": "Helidon 4 is a breaking rewrite (SynchronousProvider, io.helidon.metrics.RegistryFactory, MP-metrics Meter/Tag are all gone). The code targets Helidon 2.x, so a major bump does not compile until it is migrated by hand. Keep Renovate from proposing/merging Helidon majors; minor+patch within the current major still flow. Remove this rule only together with the Helidon 4 code migration.",
+      "matchPackagePatterns": ["^io\\.helidon"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    }
   ]
 }
