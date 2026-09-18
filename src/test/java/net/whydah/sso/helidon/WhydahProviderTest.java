@@ -1,19 +1,12 @@
 package net.whydah.sso.helidon;
 
-import junit.framework.TestCase;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-public class WhydahProviderTest extends TestCase {
-
-    private WhydahProvider whydahProvider;
-
-
-    public void setUp() {
-       // whydahProvider = new WhydahProvider();
-    }
+public class WhydahProviderTest {
 
     @Disabled
+    @Test
     public void testIsWhydahEnabled() {
-//        assertFalse(whydahProvider.isWhydahEnabled());
     }
 }
